@@ -18,9 +18,9 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, primary_key: true|
-|name|string||
-|mail|string||
-|password|string||
+|name|string|null: false|
+|mail|string|null: false|
+|password|string|null: false|
 
 ### Association
 - has_many :groups
@@ -31,7 +31,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |group_id|integer|null: false, primary_key: true|
-|group_name|text||
+|group_name|text|null: false|
 
 ### Association
 - has_many :users
@@ -55,7 +55,7 @@ Things you may want to cover:
 |message_id|integer|null: false, primary_key: true|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
-|body|text||
+|body|text|null: false|
 |image|string||
 
 
