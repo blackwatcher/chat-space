@@ -4,9 +4,9 @@
 .wrapper
   
   = render 'shared/side_bar'
-  / ------ メイン ------
+  
   .chat
-    / ------ メイン・ヘッダー ------
+    
     .header
       .left-header
         .left-header__title
@@ -17,8 +17,7 @@
             testuser02
       .right-header
         .right-header__button Edit
-    / ------ メイン・ヘッダー ------
-    / ------ メイン・メッセージ ------
+    
     .messages
       .message
         .upper-message
@@ -47,15 +46,12 @@
         .lower-message
           %p.lower-message__content
             あああ
-    / ------ メイン・メッセージ ------
-    / ------ メイン・フォーム ------
+    
     .form
       %form
-        %input.form__message{:placeholder => "type a message", :type => "text"}/
+        %input.form__message{placeholder: 'type a message', type: 'text'}/
         .form__mask
           %label.form__mask__image
             = fa_icon 'picture-o', class: 'icon'
-            %input.hidden{:type => "file"}
-        %input.form__submit{:type => "submit", :value => "Send"}/
-    / ------ メイン・フォーム ------
-  / ------ メイン ------
+            %input.hidden{type: 'file'}
+        %input.form__submit{type: 'submit', value: 'Send'}/
