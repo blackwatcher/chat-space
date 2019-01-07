@@ -12,13 +12,10 @@
           = fa_icon 'cog', class: 'icon'
   
   .groups
-    .group
-      .group__name
-        テストグループ１
-      .group__message
-        あああ
-    .group
-      .group__name
-        テストグループ２
-      .group__message
-        あああ
+    - current_user.groups.each do |group|
+      .group
+        = link_to group_messages_path(group) do
+          .group__name
+            = group.name
+          .group__message
+            メッセージはまだありません。

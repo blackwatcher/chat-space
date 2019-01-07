@@ -12,11 +12,7 @@
         margin-top: 35px;
       }
       &__members {
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        display: -o-flex;
-        display: flex;
+        @include flexbox;
         color: $light_gray;
         font-size: $font_min;
         margin-top: 15px;
@@ -44,7 +40,6 @@
     background-color: #FAFAFA;
     box-sizing: border-box;
     height: calc(100vh - 100px - 90px);
-    overflow: scroll;
     padding: 46px 40px 0;
     .message {
       margin-bottom: 40px;
@@ -66,7 +61,7 @@
         &__content {
           color: $dark_gray;
           font-size: $font_small;
-          margin-bottom: 10px;
+          margin-bottom: 40px;
         }
       }
     }
@@ -89,13 +84,13 @@
       float: left;
       height: 50px;
       padding-right: 10px;
-    }
-    &__mask__image {
-      font-size: $font_large;
-      line-height: 50px;
-    }
-    &__mask .hidden {
-      display: none;
+      &__image {
+        font-size: $font_large;
+        line-height: 50px;
+      }
+      .hidden {
+        display: none;
+      }
     }
     &__submit {
       background-color: $light_blue;
