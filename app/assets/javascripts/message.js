@@ -1,6 +1,7 @@
 $(function(){
   function buildHtml(msg){
-    var resultMsgFull = `
+    var imgHtml = msg.image.url ? `<img src="${msg.image.url}" class="lower-message__image">` : ""
+    var msgHtml = `
     <div class="message">
       <div class="upper-message">
         <div class="upper-message__user-name">${msg.user_name}</div>
@@ -8,24 +9,10 @@ $(function(){
       </div>
       <div class="lower-message">
         <p class="lower-message__content">${msg.content}</p>
-        <img src="${msg.image.url}" class="lower-message__image" >
+        ${imgHtml}
       </div>
     </div>`;
-    var resultMsgNoImg = `
-    <div class="message">
-      <div class="upper-message">
-        <div class="upper-message__user-name">${msg.user_name}</div>
-        <div class="upper-message__date">${msg.created_at}</div>
-      </div>
-      <div class="lower-message">
-        <p class="lower-message__content">${msg.content}</p>
-      </div>
-    </div>`;
-    if (msg.image.url) {
-      return resultMsgFull;
-    } else {
-      return resultMsgNoImg;
-    }
+    return msgHtml;
   };
   $('#new_message').on('submit', function(e){
     e.preventDefault();
