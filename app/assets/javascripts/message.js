@@ -1,10 +1,32 @@
 $(function(){
   function buildHtml(msg){
-    if (msg.content && msg.image.url) var msgType = '<div class="message"><div class="upper-message"><div class="upper-message__user-name">' + msg.user_name + '</div><div class="upper-message__date">' + msg.created_at + '</div></div><div class="lower-message"><p class="lower-message__content">' + msg.content + '</p><img src="' + msg.image.url + '" class="lower-message__image" ></div></div>';
-    else if (msg.content) var msgType = '<div class="message"><div class="upper-message"><div class="upper-message__user-name">' + msg.user_name + '</div><div class="upper-message__date">' + msg.created_at + '</div></div><div class="lower-message"><p class="lower-message__content">' + msg.content + "</p></div></div>";
-    else if (msg.image.url) var msgType = '<div class="message"><div class="upper-message"><div class="upper-message__user-name">' + msg.user_name + '</div><div class="upper-message__date">' + msg.created_at + '</div></div><div class="lower-message"><img src="' + msg.image.url + '" class="lower-message__image" ></div></div>';
-    return msgType
-  }
+    var resultMsgFull = `
+    <div class="message">
+      <div class="upper-message">
+        <div class="upper-message__user-name">${msg.user_name}</div>
+        <div class="upper-message__date">${msg.created_at}</div>
+      </div>
+      <div class="lower-message">
+        <p class="lower-message__content">${msg.content}</p>
+        <img src="${msg.image.url}" class="lower-message__image" >
+      </div>
+    </div>`;
+    var resultMsgNoImg = `
+    <div class="message">
+      <div class="upper-message">
+        <div class="upper-message__user-name">${msg.user_name}</div>
+        <div class="upper-message__date">${msg.created_at}</div>
+      </div>
+      <div class="lower-message">
+        <p class="lower-message__content">${msg.content}</p>
+      </div>
+    </div>`;
+    if (msg.image.url) {
+      return resultMsgFull;
+    } else {
+      return resultMsgNoImg;
+    }
+  };
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var msgArea = $(this);
