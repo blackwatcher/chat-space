@@ -41,6 +41,7 @@
     box-sizing: border-box;
     height: calc(100vh - 100px - 90px);
     padding: 46px 40px 0;
+    overflow: scroll;
     .message {
       margin-bottom: 40px;
       .upper-message {
