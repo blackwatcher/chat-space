@@ -8,7 +8,6 @@ class GroupsController < ApplicationController
   	@group = Group.new
     @group.users << current_user
     @keyword = params[:keyword]
-
     if @keyword.present?
       @users = User.where('name LIKE(?)', "%#{@keyword}%").limit(20)
       respond_to do |format|
