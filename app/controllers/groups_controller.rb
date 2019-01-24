@@ -5,7 +5,6 @@ class GroupsController < ApplicationController
   end
 
   def new
-    
   	@group = Group.new
     @group.users << current_user
     @keyword = params[:keyword]
@@ -16,7 +15,6 @@ class GroupsController < ApplicationController
         format.json
       end
     end
-
   end
 
   def create
