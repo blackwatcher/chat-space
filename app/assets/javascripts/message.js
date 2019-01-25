@@ -40,7 +40,6 @@ $(function() {
 
   $("#user-search-field").on("keyup", function() {
     var searchUserName = $("#user-search-field").val();
-    console.log(searchUserName);
     searchUser(searchUserName);
   });
 
