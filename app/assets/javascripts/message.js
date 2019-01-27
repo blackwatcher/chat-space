@@ -3,14 +3,14 @@ $(function() {
   var search_list = $("#user-search-result");
   function appendUser(user) {
     var html = `<div class="chat-group-user clearfix">
-                  <p class="chat-group-user__name">` + user.user_name + `</p>
-                  <a class="user-search-add chat-group-user__btn chat-group-user__btn--add js-add-btn" data-user-id="` + user.user_id + `" data-user-name="` + user.user_name + `">追加</a>
+                  <p class="chat-group-user__name">` + user.name + `</p>
+                  <a class="user-search-add chat-group-user__btn chat-group-user__btn--add js-add-btn" data-user-id="` + user.id + `" data-user-name="` + user.name + `">追加</a>
                 </div>`
     search_list.append(html);
   };
 
   function addUser(id, name) {
-    var addUser = `<div class="chat-group-user clearfix js-chat-member" id="chat-group-user-` + id + `">
+    var addUser = `<div class="chat-group-user clearfix js-chat-member" id="chat-group-user">
                      <input type="hidden" name="group[user_ids][]" value="` + id + `">
                      <p class="chat-group-user__name">` + name + `</p>
                      <a class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn" data-user-id="` + id + `">削除</a>
@@ -21,7 +21,7 @@ $(function() {
   function searchUser(searchUserName) {
     $.ajax({
       type: 'GET',
-      url: '/groups/new',
+      url: '/users',
       data: { keyword: searchUserName },
       dataType: 'json'
     })
@@ -54,9 +54,7 @@ $(function() {
   $(".js-add-user").on("click", ".js-remove-btn", function() { 
       $(this).parent(".js-chat-member").remove() 
   });
-});
 
-$(function(){
   function buildHtml(msg){
     var imgHtml = msg.image.url ? `<img src="${msg.image.url}" class="lower-message__image">` : ""
     var msgHtml = `
@@ -72,6 +70,7 @@ $(function(){
     </div>`;
     return msgHtml;
   };
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var msgArea = $(this);
