@@ -1,12 +1,9 @@
 class UsersController < ApplicationController
 	def index
 	  @keyword = params[:keyword]
-      if @keyword.present?
-        @users = User.where('name LIKE(?)', "%#{@keyword}%").limit(20)
-        respond_to do |format|
-          format.html
-          format.json
-        end
+      @users = User.where('name LIKE(?)', "%#{@keyword}%").limit(20)
+      respond_to do |format|
+        format.json
       end
 	end
 
