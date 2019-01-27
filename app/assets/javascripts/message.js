@@ -71,6 +71,19 @@ $(function() {
     return msgHtml;
   };
 
+  function autoUpdate() {
+    $.ajax({ url: window.location.href, type: "GET", dataType: "json" }).done(function(data) {
+      var html = "";
+      data.forEach(function(data) { html += buildHtml(data) });
+      var msgsArea = $(".messages");
+      msgsArea.empty();
+      msgsArea.append(html);
+      msgsArea.animate({ scrollTop: msgsArea[0].scrollHeight }, 1500);
+    }).fail(function() { 
+      alert('error');
+    })
+  };
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var msgArea = $(this);
@@ -95,4 +108,6 @@ $(function() {
       $(".form__submit").removeAttr("disabled");
     })
   })
+
+  setInterval(autoUpdate, 5000)
 });
