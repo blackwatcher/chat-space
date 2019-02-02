@@ -14,7 +14,7 @@ $(function() {
                      <input type="hidden" name="group[user_ids][]" value="` + id + `">
                      <p class="chat-group-user__name">` + name + `</p>
                      <a class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn" data-user-id="` + id + `">削除</a>
-                    </div>`
+                   </div>`
     return addUser
   };
 
@@ -58,7 +58,7 @@ $(function() {
   function buildHtml(msg){
     var imgHtml = msg.image.url ? `<img src="${msg.image.url}" class="lower-message__image">` : ""
     var msgHtml = `
-    <div class="message">
+    <div class="message" data-id="${msg.id}" data-group_id="${msg.group_id}">
       <div class="upper-message">
         <div class="upper-message__user-name">${msg.user_name}</div>
         <div class="upper-message__date">${msg.created_at}</div>
@@ -72,13 +72,29 @@ $(function() {
   };
 
   function autoUpdate() {
-    $.ajax({ url: window.location.href, type: "GET", dataType: "json" }).done(function(data) {
-      var html = "";
-      data.forEach(function(data) { html += buildHtml(data) });
-      var msgsArea = $(".messages");
-      msgsArea.empty();
-      msgsArea.append(html);
-      msgsArea.animate({ scrollTop: msgsArea[0].scrollHeight }, 1500);
+    var message_id = $('.message:last').data('id');
+    var group_id = $('.message:last').data('group_id');
+    $.ajax({ 
+      url: location.href,
+      type: "GET",
+      data: { 
+        message: { 
+          message_id: message_id,
+          group_id: group_id 
+        } 
+      },
+      dataType: 'json'
+    })
+    .done(function(data) {
+      if (Object.keys(data).length !== 0) {
+        data.forEach(function(msgData) { 
+          var html = "";
+          html += buildHtml(msgData) 
+          var msgsArea = $(".messages");
+          msgsArea.append(html);
+          msgsArea.animate({ scrollTop: msgsArea[0].scrollHeight }, 1500);
+        });
+      };
     }).fail(function() { 
       alert('error');
     })
@@ -107,7 +123,12 @@ $(function() {
     .always(function() {
       $(".form__submit").removeAttr("disabled");
     })
-  })
+  });
 
-  setInterval(autoUpdate, 5000)
+  $(window).bind("load", function(){
+    if(document.URL.match(/messages/)) {
+      setInterval(autoUpdate, 5000)
+    }
+  });
+
 });
