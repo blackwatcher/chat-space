@@ -1,6 +1,6 @@
 app_path = File.expand_path('../../../', __FILE__)
 working_directory "/var/www/chat-space/"
-listen "#{app_path}/shared/tmp/sockets/unicorn.sock"
+listen "/var/www/chat-space/shared/tmp/sockets/unicorn.sock"
 pid "#{app_path}/shared/tmp/pids/unicorn.pid"
 stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
 stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
