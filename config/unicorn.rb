@@ -1,9 +1,9 @@
 app_path = File.expand_path('../../../', __FILE__)
 working_directory "/var/www/chat-space/"
-listen "/var/www/chat-space/shared/tmp/sockets/unicorn.sock"
-pid "/var/www/chat-space/shared/tmp/pids/unicorn.pid"
-stderr_path "/var/www/chat-space/shared/log/unicorn.stderr.log"
-stdout_path "/var/www/chat-space/shared/log/unicorn.stdout.log"
+listen "/var/www/chat-space/tmp/sockets/unicorn.sock"
+pid "/var/www/chat-space/tmp/pids/unicorn.pid"
+stderr_path "/var/www/chat-space/log/unicorn.stderr.log"
+stdout_path "/var/www/chat-space/log/unicorn.stdout.log"
 
 listen 3000
 timeout 60
