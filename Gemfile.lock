@@ -303,7 +303,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-eventstream
+  aws-eventstream (= 1.0.1)
   byebug
   capistrano
   capistrano-bundler

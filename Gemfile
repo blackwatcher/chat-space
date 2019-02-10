@@ -72,7 +72,7 @@ gem 'erb2haml'
 gem "font-awesome-rails"
 gem 'devise'
 gem 'carrierwave'
-gem 'aws-eventstream'
+gem 'aws-eventstream', '1.0.1'
 gem 'carrierwave-aws'
 gem 'mini_magick'
 gem 'fog-aws'
