@@ -304,6 +304,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-eventstream (= 1.0.1)
+  aws-partitions (= 1.136.0)
   byebug
   capistrano
   capistrano-bundler
