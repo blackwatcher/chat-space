@@ -312,6 +312,7 @@ DEPENDENCIES
   aws-sdk-core (= 3.46.0)
   aws-sdk-kms (= 1.13.0)
   aws-sdk-rails
+  aws-sdk-s3 (= 1.30.1)
   byebug
   capistrano
   capistrano-bundler
