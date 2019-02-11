@@ -309,6 +309,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk-core (= 3.46.0)
   aws-sdk-rails
   byebug
   capistrano
