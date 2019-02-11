@@ -310,6 +310,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk-core (= 3.46.0)
+  aws-sdk-kms (= 1.13.0)
   aws-sdk-rails
   byebug
   capistrano
