@@ -73,6 +73,7 @@ gem "font-awesome-rails"
 gem 'devise'
 gem 'carrierwave'
 gem 'aws-sdk-rails'
+gem 'jmespath', '1.4.0'
 gem 'carrierwave-aws'
 gem 'mini_magick'
 gem 'fog-aws'
